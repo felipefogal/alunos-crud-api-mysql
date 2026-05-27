@@ -1,0 +1,28 @@
+{
+  "name": "alunos-crud-api-mysql",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "src/index.js",
+  "devDependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "nodemon": "^3.1.14",
+    "sequelize-cli": "^6.6.5"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "dev-start-server": "npm run dev"
+  },
+  "dependencies": {
+    "express": "^4.22.1",
+    "mysql2": "^3.6.0",
+    "sequelize": "^6.37.0",
+    "swagger-autogen": "^2.23.7",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  }
+}
