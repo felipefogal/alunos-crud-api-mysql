@@ -37,11 +37,11 @@ router.get("/disciplina", getDisciplinas);
  *   tags: [Disciplinas]
  *   parameters:
  *   - in: path
- *      name: id
- *      schema:
- *        type: integer
- *      required: true
- *      description: ID da disciplina
+ *     name: id
+ *     schema:
+ *       type: integer
+ *     required: true
+ *     description: ID da disciplina
  *   responses:
  *       200:
  *           description: Disciplina retornada com sucesso
@@ -65,12 +65,12 @@ router.get("/disciplina/:id", getDisciplinaById);
  *            schema:
  *              $ref: '#/components/schemas/Disciplina'
  *      responses:
- *      201:
- *          description: Disciplina criada com sucesso
- *      400:
- *          description: Requisição inválida
- *      500:
- *          description: Erro ao criar a disciplina
+ *          201:
+ *              description: Disciplina criada com sucesso
+ *          400:
+ *              description: Requisição inválida
+ *          500:
+ *              description: Erro ao criar a disciplina
  * */
 router.post("/disciplina", createDisciplina);
 
@@ -83,10 +83,10 @@ router.post("/disciplina", createDisciplina);
  *      parameters:
  *        - in: path
  *          name: id
- *      schema:
- *        type: integer
- *      required: true
- *      description: ID da disciplina
+ *          schema:
+ *            type: integer
+ *          required: true
+ *          description: ID da disciplina
  *      requestBody:
  *        required: true
  *        content:
@@ -94,14 +94,14 @@ router.post("/disciplina", createDisciplina);
  *            schema:
  *              $ref: '#/components/schemas/Disciplina'
  *      responses:
- *      200:
- *          description: Disciplina atualizada com sucesso
- *      400:
- *          description: Requisição inválida
- *      404:
- *          description: Disciplina não encontrada
- *      500:
- *          description: Erro ao atualizar a disciplina
+ *          200:
+ *              description: Disciplina atualizada com sucesso
+ *          400:
+ *              description: Requisição inválida
+ *          404:
+ *              description: Disciplina não encontrada
+ *          500:
+ *              description: Erro ao atualizar a disciplina
  * */
 router.put("/disciplina/:id", updateDisciplina);
 
@@ -115,14 +115,16 @@ router.put("/disciplina/:id", updateDisciplina);
  *        - in: path
  *          name: id
  *          schema:
- *            $ref: '#/components/schemas/Disciplina'
+ *            type: integer
+ *          required: true
+ *          descriptiom: ID da disciplina
  *      responses:
- *      200:
- *          description: Disciplina excluída com sucesso
- *      404:
- *          description: Disciplina não encontrada
- *      500:
- *          description: Erro ao excluir a disciplina
+ *          200:
+ *              description: Disciplina excluída com sucesso
+ *          404:
+ *              description: Disciplina não encontrada
+ *          500:
+ *              description: Erro ao excluir a disciplina
  * */
 router.delete("/disciplina/:id", deleteDisciplina);
 
