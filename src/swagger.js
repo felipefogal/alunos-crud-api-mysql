@@ -74,6 +74,37 @@ const options = {
             },
           },
         },
+        Disciplina: {
+          type: "object",
+          properties: {
+            nome: {
+              type: "string",
+              example: "Programação Web",
+              description: "Nome da disciplina",
+              required: true,
+            },
+            descricao: {
+              type: "string",
+              example: "Disciplina de programação web",
+              description: "Descrição da disciplina",
+            },
+          },
+        },
+        Matricula: {
+          type: "object",
+          properties: {
+            alunoId: {
+              type: "integer",
+              example: 1,
+              description: "ID do aluno",
+            },
+            disciplinaId: {
+              type: "integer",
+              example: 1,
+              description: "ID da disciplina",
+            },
+          },
+        },
       },
     },
   },

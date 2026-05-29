@@ -12,7 +12,7 @@ const router = express.Router();
 /**
  * @swagger
  * tags:
- *   name: Disciplinas
+ *   name: Disciplina
  *   description: Operações relacionadas a disciplinas
  */
 /**
@@ -20,7 +20,7 @@ const router = express.Router();
  * /disciplina:
  *  get:
  *   summary: Retorna uma lista de disciplinas
- *   tags: [Disciplinas]
+ *   tags: [Disciplina]
  *   responses:
  *      200:
  *          description: Lista de disciplinas retornada com sucesso
@@ -34,7 +34,7 @@ router.get("/disciplina", getDisciplinas);
  * /disciplina/{id}:
  *  get:
  *   summary: Retorna uma disciplina pelo ID
- *   tags: [Disciplinas]
+ *   tags: [Disciplina]
  *   parameters:
  *   - in: path
  *     name: id
@@ -57,7 +57,7 @@ router.get("/disciplina/:id", getDisciplinaById);
  * /disciplina:
  *  post:
  *      summary: Cria uma nova disciplina
- *      tags: [Disciplinas]
+ *      tags: [Disciplina]
  *      requestBody:
  *        required: true
  *        content:
@@ -71,7 +71,7 @@ router.get("/disciplina/:id", getDisciplinaById);
  *              description: Requisição inválida
  *          500:
  *              description: Erro ao criar a disciplina
- * */
+ */
 router.post("/disciplina", createDisciplina);
 
 /**
@@ -79,7 +79,7 @@ router.post("/disciplina", createDisciplina);
  * /disciplina/{id}:
  *  put:
  *      summary: Atualiza uma disciplina pelo ID
- *      tags: [Disciplinas]
+ *      tags: [Disciplina]
  *      parameters:
  *        - in: path
  *          name: id
@@ -102,7 +102,7 @@ router.post("/disciplina", createDisciplina);
  *              description: Disciplina não encontrada
  *          500:
  *              description: Erro ao atualizar a disciplina
- * */
+ */
 router.put("/disciplina/:id", updateDisciplina);
 
 /**
@@ -110,14 +110,14 @@ router.put("/disciplina/:id", updateDisciplina);
  * /disciplina/{id}:
  *  delete:
  *      summary: Exclui uma disciplina pelo ID
- *      tags: [Disciplinas]
+ *      tags: [Disciplina]
  *      parameters:
  *        - in: path
  *          name: id
  *          schema:
  *            type: integer
  *          required: true
- *          descriptiom: ID da disciplina
+ *          description: ID da disciplina
  *      responses:
  *          200:
  *              description: Disciplina excluída com sucesso
@@ -125,7 +125,7 @@ router.put("/disciplina/:id", updateDisciplina);
  *              description: Disciplina não encontrada
  *          500:
  *              description: Erro ao excluir a disciplina
- * */
+ */
 router.delete("/disciplina/:id", deleteDisciplina);
 
 export default router;

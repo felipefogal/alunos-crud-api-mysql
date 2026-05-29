@@ -4,6 +4,7 @@ import {
   getCursos,
   getCursoById,
   updateCurso,
+  deleteCurso,
 } from "../controllers/cursoController.js";
 
 const router = express.Router();
@@ -60,39 +61,60 @@ router.get("/curso/:id", getCursoById);
  *         application/json:
  *           schema:
  *             $ref: '#/components/schemas/Curso'
-*     responses:
-*      201:
-*        description: Curso criado com sucesso
-*     400:
-*       description: Requisição inválida
+ *     responses:
+ *      201:
+ *        description: Curso criado com sucesso
+ *     400:
+ *       description: Requisição inválida
  */
 router.post("/curso", createCurso);
 
 /**
-* @swagger
-* /curso/{id}:
-*   put:
-*     summary: Atualiza um curso pelo ID
-*     tags: [Curso]
-*     parameters:
-*      - in: path
-*        name: id
-*        schema:
-*          type: integer
-*        required: true
-*        description: ID do curso
-*     requestBody:
-*       required: true
-*       content:
-*         application/json:
-*           schema:
-*             $ref: '#/components/schemas/Curso'
-*     responses:
-*      200:
-*        description: Curso atualizado com sucesso
-*     404:
-*       description: Curso não encontrado
+ * @swagger
+ * /curso/{id}:
+ *   put:
+ *     summary: Atualiza um curso pelo ID
+ *     tags: [Curso]
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *          type: integer
+ *        required: true
+ *        description: ID do curso
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Curso'
+ *     responses:
+ *      200:
+ *        description: Curso atualizado com sucesso
+ *     404:
+ *       description: Curso não encontrado
  */
 router.put("/curso/:id", updateCurso);
+
+/**
+ * @swagger
+ * /curso/{id}:
+ *   delete:
+ *     summary: Deleta um curso pelo ID
+ *     tags: [Curso]
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *          type: integer
+ *        required: true
+ *        description: ID do curso
+ *     responses:
+ *      200:
+ *        description: Curso deletado com sucesso
+ *     404:
+ *       description: Curso não encontrado
+ */
+router.delete("/curso/:id", deleteCurso);
 
 export default router;
