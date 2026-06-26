@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "express": "^4.22.1",
+    "express-oauth2-jwt-bearer": "^1.9.0",
     "mysql2": "^3.6.0",
     "sequelize": "^6.37.0",
     "swagger-autogen": "^2.23.7",
