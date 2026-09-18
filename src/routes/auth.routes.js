@@ -10,7 +10,7 @@ router.post("/token", async (req, res) => {
     console.log(req.body);
     return res
       .status(400)
-      .json({ error: "client_id e client_secret são obrigatórios abobora." });
+      .json({ error: "client_id e client_secret são obrigatórios." });
   }
 
   try {

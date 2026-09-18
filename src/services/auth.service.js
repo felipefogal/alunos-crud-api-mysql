@@ -4,17 +4,17 @@ const AUTH0_TOKEN_URL = `https://${process.env.AUTH0_DOMAIN}/oauth/token`;
 
 const tokenCache = new Map();
 
-const getToken = async (clientId, clientSecret) => {
+const getToken = async (client_id, client_secret) => {
 
     const agora = Date.now();
-    const cached = tokenCache.get(clientId);
+    const cached = tokenCache.get(client_id);
 
     if (cached && agora < cached.expiresAt - 60_000) {
-        console.log(`[Auth] Usando token cacheado para cliend_id: ${clientID}.`);
+        console.log(`[Auth] Usando token cacheado para cliend_id: ${client_id}.`);
         return cached.token;
     }
 
-    console.log(`[Auth] Buscando novo token no Auth0 para cliend_id: ${clientId}.`);
+    console.log(`[Auth] Buscando novo token no Auth0 para cliend_id: ${client_id}.`);
 
     const response = await fetch(AUTH0_TOKEN_URL, {
         method: 'POST',
@@ -22,8 +22,8 @@ const getToken = async (clientId, clientSecret) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            client_id: clientId,
-            client_secret: clientSecret,
+            client_id: client_id,
+            client_secret: client_secret,
             audience: process.env.AUTH0_AUDIENCE,
             grant_type: 'client_credentials'
         })
@@ -36,7 +36,7 @@ const getToken = async (clientId, clientSecret) => {
 
     const data = await response.json();
 
-    tokenCache.set(clientId, {
+    tokenCache.set(client_id, {
         token: data.access_token,
         expiresAt: agora + data.expires_in * 1000
     });
