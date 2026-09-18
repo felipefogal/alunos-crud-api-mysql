@@ -1,0 +1,48 @@
+import "dotenv/config.js";
+
+const AUTH0_TOKEN_URL = `https://${process.env.AUTH0_DOMAIN}/oauth/token`;
+
+const tokenCache = new Map();
+
+const getToken = async (clientId, clientSecret) => {
+
+    const agora = Date.now();
+    const cached = tokenCache.get(clientId);
+
+    if (cached && agora < cached.expiresAt - 60_000) {
+        console.log(`[Auth] Usando token cacheado para cliend_id: ${clientID}.`);
+        return cached.token;
+    }
+
+    console.log(`[Auth] Buscando novo token no Auth0 para cliend_id: ${clientId}.`);
+
+    const response = await fetch(AUTH0_TOKEN_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            client_id: clientId,
+            client_secret: clientSecret,
+            audience: process.env.AUTH0_AUDIENCE,
+            grant_type: 'client_credentials'
+        })
+    });
+
+    if (!response.ok) {
+        const erro = await response.json();
+        throw new Error(`Credenciais inválidas: ${erro.error_description ?? response.statusText}`);
+    }
+
+    const data = await response.json();
+
+    tokenCache.set(clientId, {
+        token: data.access_token,
+        expiresAt: agora + data.expires_in * 1000
+    });
+
+    console.log(`[Auth] Novo token obtido. Expira em ${data.expires_in} segundos.`);
+    return data.access_token;
+}
+
+export { getToken };

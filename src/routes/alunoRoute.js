@@ -1,4 +1,5 @@
 import express from "express";
+import { checkJwt } from "../middlewares/auth.middleware.js";
 import {
   createAluno,
   getAlunos,
@@ -26,7 +27,7 @@ const router = express.Router();
  *      200:
  *        description: Lista de alunos retornada com sucesso
  */
-router.get("/aluno", getAlunos);
+router.get("/aluno", checkJwt, getAlunos);
 
 /**
  * @swagger
@@ -47,7 +48,7 @@ router.get("/aluno", getAlunos);
  *     404:
  *       description: Aluno não encontrado
  */
-router.get("/aluno/:id", getAlunoById);
+router.get("/aluno/:id", checkJwt, getAlunoById);
 
 /**
  * @swagger
@@ -67,7 +68,7 @@ router.get("/aluno/:id", getAlunoById);
  *     400:
  *      description: Requisição inválida
  */
-router.post("/aluno", createAluno);
+router.post("/aluno", checkJwt, createAluno);
 
 /**
  * @swagger
@@ -94,7 +95,7 @@ router.post("/aluno", createAluno);
  *     404:
  *       description: Aluno não encontrado
  */
-router.put("/aluno/:id", updateAluno);
+router.put("/aluno/:id", checkJwt, updateAluno);
 
 /**
  * @swagger
@@ -115,6 +116,6 @@ router.put("/aluno/:id", updateAluno);
  *     404:
  *       description: Aluno não encontrado
  */
-router.delete("/aluno/:id", deleteAluno);
+router.delete("/aluno/:id", checkJwt, deleteAluno);
 
 export default router;
