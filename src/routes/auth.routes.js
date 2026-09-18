@@ -14,8 +14,8 @@ router.post("/token", async (req, res) => {
   }
 
   try {
-    const token = await getToken(client_id, client_secret);
-    res.json({ access_token: token });
+    const tokenData = await getToken(client_id, client_secret);
+    res.json(tokenData);
   } catch (error) {
     res.status(401).json({ error: error.message });
   }

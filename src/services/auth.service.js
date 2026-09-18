@@ -11,7 +11,11 @@ const getToken = async (client_id, client_secret) => {
 
     if (cached && agora < cached.expiresAt - 60_000) {
         console.log(`[Auth] Usando token cacheado para cliend_id: ${client_id}.`);
-        return cached.token;
+        return {
+            access_token: cached.token,
+            expires_in: Math.floor((cached.expiresAt - agora) / 1000),
+            token_type: 'Bearer'
+        };
     }
 
     console.log(`[Auth] Buscando novo token no Auth0 para cliend_id: ${client_id}.`);
@@ -35,6 +39,7 @@ const getToken = async (client_id, client_secret) => {
     }
 
     const data = await response.json();
+    console.log(data);
 
     tokenCache.set(client_id, {
         token: data.access_token,
@@ -42,7 +47,11 @@ const getToken = async (client_id, client_secret) => {
     });
 
     console.log(`[Auth] Novo token obtido. Expira em ${data.expires_in} segundos.`);
-    return data.access_token;
+    return {
+        access_token: data.access_token,
+        expires_in: data.expires_in,
+        token_type: data.token_type
+    };
 }
 
 export { getToken };
