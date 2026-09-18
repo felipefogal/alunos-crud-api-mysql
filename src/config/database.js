@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import dotenv from "dotenv/config.js";
+import "dotenv/config.js";
 
 /*Conexão local utilizando MySQL Workbench*/
 const sequelize = new Sequelize(process.env.DB_LOCAL_NAME, process.env.DB_LOCAL_USER, process.env.DB_LOCAL_PASSWORD, {
