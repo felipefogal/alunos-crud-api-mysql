@@ -1,4 +1,5 @@
 import express from "express";
+import { checkJwt } from "../middlewares/auth.middleware.js";
 import {
   createCurso,
   getCursos,
@@ -26,7 +27,7 @@ const router = express.Router();
  *      200:
  *        description: Lista de cursos retornada com sucesso
  */
-router.get("/curso", getCursos);
+router.get("/curso", checkJwt, getCursos);
 
 /**
  * @swagger
@@ -44,10 +45,10 @@ router.get("/curso", getCursos);
  *     responses:
  *      200:
  *        description: Curso retornado com sucesso
- *     404:
- *       description: Curso não encontrado
+ *      404:
+ *        description: Curso não encontrado
  */
-router.get("/curso/:id", getCursoById);
+router.get("/curso/:id", checkJwt, getCursoById);
 
 /**
  * @swagger
@@ -64,10 +65,10 @@ router.get("/curso/:id", getCursoById);
  *     responses:
  *      201:
  *        description: Curso criado com sucesso
- *     400:
- *       description: Requisição inválida
+ *      400:
+ *        description: Requisição inválida
  */
-router.post("/curso", createCurso);
+router.post("/curso", checkJwt, createCurso);
 
 /**
  * @swagger
@@ -91,10 +92,10 @@ router.post("/curso", createCurso);
  *     responses:
  *      200:
  *        description: Curso atualizado com sucesso
- *     404:
- *       description: Curso não encontrado
+ *      404:
+ *        description: Curso não encontrado
  */
-router.put("/curso/:id", updateCurso);
+router.put("/curso/:id", checkJwt, updateCurso);
 
 /**
  * @swagger
@@ -112,9 +113,9 @@ router.put("/curso/:id", updateCurso);
  *     responses:
  *      200:
  *        description: Curso deletado com sucesso
- *     404:
- *       description: Curso não encontrado
+ *      404:
+ *        description: Curso não encontrado
  */
-router.delete("/curso/:id", deleteCurso);
+router.delete("/curso/:id", checkJwt, deleteCurso);
 
 export default router;

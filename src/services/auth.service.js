@@ -1,11 +1,9 @@
 import "dotenv/config.js";
 
 const AUTH0_TOKEN_URL = `https://${process.env.AUTH0_DOMAIN}/oauth/token`;
-
 const tokenCache = new Map();
 
 const getToken = async (client_id, client_secret) => {
-
     const agora = Date.now();
     const cached = tokenCache.get(client_id);
 

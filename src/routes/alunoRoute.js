@@ -45,8 +45,8 @@ router.get("/aluno", checkJwt, getAlunos);
  *     responses:
  *      200:
  *        description: Aluno retornado com sucesso
- *     404:
- *       description: Aluno não encontrado
+ *      404:
+ *        description: Aluno não encontrado
  */
 router.get("/aluno/:id", checkJwt, getAlunoById);
 
@@ -65,8 +65,8 @@ router.get("/aluno/:id", checkJwt, getAlunoById);
  *     responses:
  *      201:
  *        description: Aluno criado com sucesso
- *     400:
- *      description: Requisição inválida
+ *      400:
+ *        description: Requisição inválida
  */
 router.post("/aluno", checkJwt, createAluno);
 
@@ -92,8 +92,8 @@ router.post("/aluno", checkJwt, createAluno);
  *     responses:
  *      200:
  *        description: Aluno atualizado com sucesso
- *     404:
- *       description: Aluno não encontrado
+ *      404:
+ *        description: Aluno não encontrado
  */
 router.put("/aluno/:id", checkJwt, updateAluno);
 
@@ -113,8 +113,8 @@ router.put("/aluno/:id", checkJwt, updateAluno);
  *     responses:
  *      200:
  *        description: Aluno excluído com sucesso
- *     404:
- *       description: Aluno não encontrado
+ *      404:
+ *        description: Aluno não encontrado
  */
 router.delete("/aluno/:id", checkJwt, deleteAluno);
 

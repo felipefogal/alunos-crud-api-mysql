@@ -14,95 +14,40 @@ const options = {
         description: "Servidor de desenvolvimento",
       },
     ],
-
     components: {
       schemas: {
         Aluno: {
           type: "object",
           properties: {
-            nome: {
-              type: "string",
-              example: "João Silva",
-              description: "Nome completo do aluno",
-              required: true,
-            },
-            email: {
-              type: "string",
-              example: "joao.silva@example.com",
-              description: "Endereço de email do aluno",
-            },
-            endereco: {
-              type: "string",
-              example: "Rua das Flores, 123",
-              description: "Endereço residencial do aluno",
-            },
-            telefone: {
-              type: "string",
-              example: "(11) 99999-9999",
-              description: "Número de telefone do aluno",
-            },
-            documento: {
-              type: "string",
-              example: "123.456.789-00",
-              description: "Número do documento do aluno",
-            },
-            rm: {
-              type: "string",
-              example: "12345",
-              description: "Registro acadêmico do aluno",
-            },
-            cursoId: {
-              type: "integer",
-              example: 1,
-              description: "ID do curso associado ao aluno",
-            },
+            nome: { type: "string", example: "João Silva" },
+            email: { type: "string", example: "joao.silva@example.com" },
+            endereco: { type: "string", example: "Rua das Flores, 123" },
+            telefone: { type: "string", example: "(11) 99999-9999" },
+            documento: { type: "string", example: "123.456.789-00" },
+            rm: { type: "string", example: "12345" },
+            cursoId: { type: "integer", example: 1 },
           },
         },
         Curso: {
           type: "object",
           properties: {
-            nome: {
-              type: "string",
-              example: "Engenharia de Software",
-              description: "Nome do curso",
-              required: true,
-            },
-            descricao: {
-              type: "string",
-              example: "Curso focado em desenvolvimento de software",
-              description: "Descrição do curso",
-            },
+            nomeCurso: { type: "string", example: "Engenharia de Software" },
+            descricaoCurso: { type: "string", example: "Curso focado em desenvolvimento de software" },
+            areaCurso: { type: "string", example: "Tecnologia" },
+            periodoCurso: { type: "string", example: "Noturno" },
+            flagAtivo: { type: "boolean", example: true },
           },
         },
         Disciplina: {
           type: "object",
           properties: {
-            nome: {
-              type: "string",
-              example: "Programação Web",
-              description: "Nome da disciplina",
-              required: true,
-            },
-            descricao: {
-              type: "string",
-              example: "Disciplina de programação web",
-              description: "Descrição da disciplina",
-            },
-          },
+            nomeDisciplina: { type: "string", example: "Programação Web"}          },
         },
-        Matricula: {
+        Professor: {
           type: "object",
           properties: {
-            alunoId: {
-              type: "integer",
-              example: 1,
-              description: "ID do aluno",
-            },
-            disciplinaId: {
-              type: "integer",
-              example: 1,
-              description: "ID da disciplina",
-            },
+            nomeProfessor: { type: "string", example: "Dr. John Doe" },
+            titulacao: { type: "string", example: "Doutor" },
           },
         },
       },
